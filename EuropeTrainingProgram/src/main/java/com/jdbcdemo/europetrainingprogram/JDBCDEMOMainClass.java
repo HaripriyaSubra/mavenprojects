@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author labuser
  */
-public class JDBCDEMOMainClass {
+public class JdbcDemoMainClass {
 
     public static void main(String[] args) throws SQLException {
         JdbcDaoDemo jdbcdaodemo = new JdbcDaoDemo();

@@ -13,6 +13,7 @@ public class Persons {
     int id;
     String lastname;
     String firstname;
+    int age;
 
     public Persons(int id, String lastname, String firstname, int age) {
         this.id = id;
@@ -52,5 +53,5 @@ public class Persons {
     public void setAge(int age) {
         this.age = age;
     }
-    int age;
+    
 }

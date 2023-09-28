@@ -4,6 +4,7 @@
  */
 package com.jdbcdemo.europetrainingprogram;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,21 +16,25 @@ public class JDBCDEMOMainClass {
 
     public static void main(String[] args) throws SQLException {
         JdbcDaoDemo jdbcdaodemo = new JdbcDaoDemo();
-        jdbcdaodemo.insert_record(1001, "Nath", "Ram", 37);
-        jdbcdaodemo.insert_record(1002, "Smith", "Adams", 56);
-        jdbcdaodemo.insert_record(1003, "Doe", "John", 76);
-        jdbcdaodemo.insert_record(1004, "Abraham", "John", 32);
-        jdbcdaodemo.update_record(1001, 67);
-        jdbcdaodemo.delete_record(1001);
-        ArrayList<Persons> p = jdbcdaodemo.view_records();
-        if (p.isEmpty()) {
-            System.out.println("There are no entries present");
-        } else {
-            for (Persons person : p) {
-                System.out.println(person.getId() + "\t"
-                        + person.getLastname() + "\t" + "\t"
-                        + person.getFirstname() + "\t" + "\t"
-                        + person.getAge() + "\t");
+        Connection conn = jdbcdaodemo.connect();
+        if (conn != null) {
+            //jdbcdaodemo.truncate_table();
+            //jdbcdaodemo.insert_record(1001, "Nath", "Ram", 37);
+            //jdbcdaodemo.insert_record(1002, "Smith", "Adams", 56);
+            //jdbcdaodemo.insert_record(1003, "Doe", "John", 76);
+            //jdbcdaodemo.insert_record(1004, "Abraham", "John", 32);
+            //jdbcdaodemo.update_record(1002,67,"Nath");
+            //jdbcdaodemo.delete_record(1002);
+            ArrayList<Persons> p = jdbcdaodemo.view_records();
+            if (p.isEmpty()) {
+                System.out.println("There are no entries present");
+            } else {
+                for (Persons person : p) {
+                    System.out.println(person.getId() + "\t"
+                            + person.getLastname() + "\t" + "\t"
+                            + person.getFirstname() + "\t" + "\t"
+                            + person.getAge() + "\t");
+                }
             }
         }
     }
